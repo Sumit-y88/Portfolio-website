@@ -128,7 +128,7 @@ const SkillsSection = () => {
                 {items.CardHeading}
               </h2>
 
-              <ul className="text-[10px] my-2 text-gray-400 leading-loose">
+              <ul className="text-sm my-2 text-gray-400 leading-loose">
                 <li>• {items.feature1}</li>
                 <li>• {items.feature2}</li>
                 <li>• {items.feature3}</li>
