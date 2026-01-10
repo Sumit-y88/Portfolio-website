@@ -1,5 +1,6 @@
 import React from "react";
 import ContactMe from "./ContactMe";
+import { handleEmailClick } from "../utils/Contact";
 
 const tabs = [
   { label: "About me", path: "#aboutme" },
@@ -41,8 +42,13 @@ const MobileMenu = ({ open, setOpen }) => {
         ))}
 
         <div className="w-full h-px bgwhite/10 my-6 flex items-center justify-center">
-          <button onClick={() => setOpen(false)}
-            className="bg-blue-700 px-3 py-2 rounded-full  hover:bg-blue-800">
+          <button
+            onClick={() => {
+              setOpen(false);
+              handleEmailClick();
+            }}
+            className="bg-blue-700 px-3 py-2 rounded-full hover:bg-blue-800"
+          >
             Contact Me
           </button>
         </div>
