@@ -1,6 +1,6 @@
 import React from 'react'
 
-const tabs = ['About me', 'Projects', 'Skills']
+const tabs = ['Home','About me', 'Projects', 'Skills']
 
 const Links = () => {
   
@@ -13,13 +13,13 @@ const Links = () => {
           <div key={idx} className="group relative w-max hidden md:block">
             <a 
               href={`#${tabLink.toLowerCase().replace(/\s+/g, '')}`} 
-              className="text-gray-300 hover:text-white transition-colors duration-200 font-[18px] text-balance"
+              className="text-gray-300 hover:text-white transition-colors duration-200 text-lg text-balance"
             >
               {tabLink}
             </a>
             
             {/* The animated underline */}
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-orange-400 via-pink-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-blue-700 via-blue-700 to-blue-700 transition-all duration-300 group-hover:w-full"></span>
           </div>
         )
       })}

@@ -3,6 +3,7 @@ import ContactMe from "./ContactMe";
 import { handleEmailClick } from "../utils/Contact";
 
 const tabs = [
+  { label: "Home", path: "#home" },
   { label: "About me", path: "#aboutme" },
   { label: "Skills", path: "#skills" },
   { label: "Projects", path: "#projects" },
