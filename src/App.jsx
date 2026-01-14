@@ -5,6 +5,7 @@ import ContactMe from './components/ContactMe'
 import MainSection from './components/MainSection'
 import AboutSection from './components/AboutSection'
 import SkillsSection from './components/SkillsSection'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <MainSection/>
       <AboutSection/>
       <SkillsSection/>
+      <Footer/>
     </div>
   )
 }

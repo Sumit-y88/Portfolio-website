@@ -11,7 +11,9 @@ const AboutSection = () => {
   return (
     <div
       id="aboutme"
-      className="relative flex flex-col md:flex-row px-15 w-full h-fit mt-155 md:mt-100 mb-10"
+      className="relative flex flex-col md:flex-row px-15 w-full h-fit
+           mt-155 md:mt-100 mb-10
+           scroll-mt-24"
     >
       {/* Circle */}
       <div

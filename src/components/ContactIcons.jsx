@@ -1,5 +1,6 @@
 import React from 'react'
 import { Linkedin, Github, Instagram } from 'lucide-react';
+import { SiLeetcode } from "react-icons/si";
 const ContactIcons = () => {
     return (
         <div className='flex gap-5 justify-center md:justify-start px-2'>
@@ -11,6 +12,9 @@ const ContactIcons = () => {
             </a>
             <a href="https://www.instagram.com/sumit_y88/" target='_blank' className="group">
             <Instagram size={25} className="text-gray-400 transition-all duration-300 ease-in-out group-hover:text-white group-hover:rotate-10"/>
+            </a>
+            <a href="https://leetcode.com/u/sumit_y8888/" target='_blank' className="group">
+            <SiLeetcode size={25} className="text-gray-400 transition-all duration-300 ease-in-out group-hover:text-white group-hover:rotate-10"/>
             </a>
         </div>
     )
