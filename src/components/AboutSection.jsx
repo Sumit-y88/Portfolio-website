@@ -11,8 +11,8 @@ const AboutSection = () => {
   return (
     <div
       id="aboutme"
-      className="relative flex flex-col md:flex-row px-15 w-full h-fit
-           mt-155 md:mt-100 mb-10
+      className="relative flex flex-col md:flex-row px-10 w-full h-fit
+           mt-155 md:mt-100 md:gap-40 mb-10
            scroll-mt-24"
     >
       {/* Circle */}
@@ -27,7 +27,7 @@ const AboutSection = () => {
       <div
       ref={imageRef}
         className={`aboutMePhoto w-full h-full md:w-2/5 
-    bg-zinc-900 rounded-2xl md:mr-43
+    bg-zinc-900 rounded-2xl 
     relative z-10
     transition-all duration-300 ease-in-out
     ${imageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
