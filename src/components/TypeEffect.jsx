@@ -46,9 +46,14 @@ const TypeEffect = () => {
   }, [charIndex, isDeleting, index]);
 
   return (
-    <h2 className="my-8 text-3xl md:text-4xl text-gray-300">
+    <h2 className="my-8 text-2xl md:text-4xl text-gray-300">
       I'm a{" "}
-      <span className="text-indigo-500">{text}</span>
+      <span className=" inline
+    min-w-35
+    sm:min-w-45
+    md:min-w-75
+    text-indigo-500
+    text-left">{text}</span>
       <span className="animate-pulse">|</span>
     </h2>
   );

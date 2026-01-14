@@ -8,7 +8,7 @@ import ContactIcons from './ContactIcons'
 
 const MainSection = () => {
   return (
-    <main id='home' className=' absolute top-0 pt-30 w-full flex flex-col md:flex-row h-auto mx-auto px-15 md:px-10 mt-1'>
+    <main id='home' className='absolute top-0 pt-30  w-full flex flex-col md:flex-row h-auto mx-auto px-15 md:px-10 mt-1'>
       <div className='mt-10 md:w-1/2 w-full h-full text-center md:text-start'>
       <Heading/>
       <TypeEffect/>

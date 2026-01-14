@@ -11,12 +11,12 @@ const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <>
-    <nav className="fixed top-3 left-1/2 -translate-x-1/2 w-[95%] h-16 px-6 z-50
+    <nav className="fixed top-3 left-1/2 -translate-x-1/2 w-[95%] max-w-8xl h-16 px-6 z-50
       bg-white/15 backdrop-blur-md border border-white/10 rounded-full
       flex items-center">
 
       {/* Left */}
-      <div className="flex-1">
+      <div className="flex">
         <Logo />
       </div>
 

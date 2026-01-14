@@ -79,13 +79,13 @@ const SkillsSection = () => {
 
       <div
         className="absolute -bottom-5 -right-30
-    w-[450px] h-[350px]
+    w-112.5 h-87.5
     rounded-full bg-indigo-600 blur-2xl 
     z-0 animate-[float1_10s_ease-in-out_infinite]"
       ></div>
       <div
         className="absolute -bottom-10 right-40
-    w-[300px] h-[300px]
+    w-75 h-75
     rounded-full bg-blue-500 blur-2xl
     z-0 animate-[float3_10s_ease-in-out_infinite]"
       ></div>
@@ -102,7 +102,10 @@ const SkillsSection = () => {
       </div>
 
       {/* GRID LAYOUT */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 place-items-start group">
+      <div className=" grid 
+    grid-cols-[repeat(auto-fit,minmax(280px,1fr))] 
+    gap-10 
+    place-items-stretch">
 
         {skills.map((items, idx) => (
           <div
