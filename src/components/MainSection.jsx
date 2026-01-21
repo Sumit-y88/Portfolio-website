@@ -20,7 +20,7 @@ const MainSection = () => {
       
       </div>
       <div className='relative md:w-1/2 group w-full h-full mt-4 p-5'>
-      <img src="mainSectionImg2.png" alt="avatar" className='hero-img transition-all duration-150 ease-in hover:scale-105 animate-[float_5s_ease-in-out_infinite]'/>
+      <img src="mainSectionImg2.png" alt="avatar" className='hero-img transition-all duration-150 ease-in hover:scale-105 animate-[float_4s_ease-in-out_infinite]'/>
       </div>
     </main>
   )
