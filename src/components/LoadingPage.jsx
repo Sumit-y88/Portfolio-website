@@ -1,39 +1,32 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 
-const message = "My Portfolio"
+// Simulated components for demo
+// const Navbar = () => <nav className="p-4 bg-gray-900">Navbar</nav>
+// const Animation = () => null
+// const MainSection = () => <div className="h-screen flex items-center justify-center"><h2 className="text-4xl">Main Section</h2></div>
+// const AboutSection = () => <div className="h-screen flex items-center justify-center bg-gray-900"><h2 className="text-4xl">About Section</h2></div>
+// const SkillsSection = () => <div className="h-screen flex items-center justify-center"><h2 className="text-4xl">Skills Section</h2></div>
+// const Footer = () => <footer className="p-4 bg-gray-900">Footer</footer>
 
-const LoadingPage = () => {
-    const [text, setText] = useState("")
-    const [index, setIndex] = useState(0)
-
-    useEffect(() => {
-        if (index < message.length) {
-            const timeout = setTimeout(() => {
-                setText(prev => prev + message[index])
-                setIndex(index + 1)
-            }, 120)
-            return () => clearTimeout(timeout)
+const LoadingPage = ({ isExiting }) => {
+  return (
+    <div 
+      className={`bg-black flex items-center justify-center w-full h-screen fixed inset-0 z-51 transition-transform duration-1000 ease-in-out ${
+        isExiting ? '-translate-y-full' : 'translate-y-0'
+      }`}
+    >
+      <h1 className="welcome blink text-7xl md:text-9xl text-indigo-500">WELCOME</h1>
+       <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
-    }, [index])
-
-    return (
-        <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50
-      transition-transform duration-1000 ease-in-out">
-
-            <div className='flex flex-row items-center justify-center gap-4'>
-                <h2 className='text-xl md:text-3xl text-gray-300  mb-4'>Loading</h2>
-                <div className="relative w-8 h-8 md:w-12 md:h-12 mb-4 flex flex-row ">
-                    <div className="absolute inset-0 rounded-full border-4 border-gray-500"></div>
-                    <div className="absolute inset-0 rounded-full border-4 text-indigo-700 border-t-transparent animate-spin"></div>
-                </div>
-            </div>
-
-            <h1 className="text-3xl md:text-6xl font-sans font-bold text-indigo-700 tracking-widest">
-                {text}
-                <span className="animate-pulse">|</span>
-            </h1>
-        </div>
-    )
+        
+        .animate-fade-in {
+          animation: fadeIn 1.5s ease-in-out forwards;
+        }
+      `}</style>
+    </div>
+  )
 }
-
-export default LoadingPage
+export default LoadingPage;

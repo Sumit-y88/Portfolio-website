@@ -1,4 +1,5 @@
 import React from "react";
+import useInView from "./useInView";
 
 const skills = [
   {
@@ -58,6 +59,7 @@ const skills = [
 ];
 
 const SkillsSection = () => {
+  const [heading, setHeading] = useInView()
   return (
     <section id="skills"
       className=" relative  w-full py-20 px-10 mt-20 overflow-hidden ">

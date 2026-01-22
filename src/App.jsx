@@ -9,30 +9,35 @@ import LoadingPage from './components/LoadingPage'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
+  const [isExiting, setIsExiting] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false)
-    }, 2500) // slightly longer for typing animation
+      setIsExiting(true) // Start the exit animation
+      
+      // Remove loading page after animation completes
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000) // Match this to the transition duration
+    }, 3000)
 
     return () => clearTimeout(timer)
   }, [])
 
-  if (loading) {
-    return <LoadingPage />
-  }
-
   return (
-    <div className="min-h-screen bg-black text-white w-full overflow-x-hidden">
-      <Animation />
-      <Navbar />
-      <MainSection />
-      <AboutSection />
-      <SkillsSection />
-      <Footer />
-    </div>
+    <>
+      {loading && <LoadingPage isExiting={isExiting} />}
+      
+      <div className="min-h-screen bg-black text-white w-full overflow-x-hidden">
+        <Animation />
+        <Navbar />
+        <MainSection />
+        <AboutSection />
+        <SkillsSection />
+        <Footer />
+      </div>
+    </>
   )
 }
 
 export default App
-
