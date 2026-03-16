@@ -4,8 +4,8 @@ import { Download } from "lucide-react";
 const ResumeDownloadBtn = () => {
   const handleResumeDownload = async () => {
     const link = document.createElement("a");
-    link.href = "SUMIT_YADAV.pdf";
-    link.download = 'SUMIT_YADAV.pdf'
+    link.href = "Sumit Yadav SE.pdf";
+    link.download = 'Sumit Yadav SE.pdf'
     link.click();
   };
 
