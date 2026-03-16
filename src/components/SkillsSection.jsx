@@ -1,151 +1,66 @@
-import React from "react";
-import useInView from "./useInView";
+import {
+  FaReact,
+  FaNodeJs,
+  FaJava,
+  FaHtml5,
+  FaCss3Alt,
+  FaGithub,
+} from "react-icons/fa";
+import {
+  SiJavascript,
+  SiTailwindcss,
+  SiMongodb,
+  SiExpress,
+  SiMysql,
+  SiC,
+} from "react-icons/si";
 
 const skills = [
-  {
-    LogoImage: "html.png",
-    CardHeading: "HTML",
-    feature1: "Easy to learn and use",
-    feature2: "Platform independent",
-    feature3: "Supports multimedia elements",
-    feature4: "Provides hyperlinking between pages",
-    feature5: "Supported by all web browsers",
-  },
-  {
-    LogoImage: "css.png",
-    CardHeading: "CSS",
-    feature1: "Controls layout and design",
-    feature2: "Responsive web design support",
-    feature3: "Supports animations and transitions",
-    feature4: "Improves user interface",
-    feature5: "Works with all modern browsers",
-  },
-  {
-    LogoImage: "javascript.png",
-    CardHeading: "JavaScript",
-    feature1: "Adds interactivity to web pages",
-    feature2: "Supports event handling",
-    feature3: "Client-side and server-side usage",
-    feature4: "Works with HTML and CSS",
-    feature5: "Large ecosystem and community",
-  },
-  {
-    LogoImage: "tailwind.png",
-    CardHeading: "Tailwind CSS",
-    feature1: "Utility-first CSS framework",
-    feature2: "Highly customizable design system",
-    feature3: "Responsive and mobile-first",
-    feature4: "Faster UI development",
-    feature5: "No need to write custom CSS",
-  },
-  {
-    LogoImage: "react.png",
-    CardHeading: "React",
-    feature1: "Component-based architecture",
-    feature2: "Reusable UI components",
-    feature3: "Virtual DOM for better performance",
-    feature4: "Strong ecosystem and libraries",
-    feature5: "Used for single-page applications",
-  },
-  {
-    LogoImage: "mysql.png",
-    CardHeading: "MySQL",
-    feature1: "Open-source relational database",
-    feature2: "Uses SQL for data management",
-    feature3: "Fast and reliable performance",
-    feature4: "Secure and scalable",
-    feature5: "Widely used in web applications",
-  },
+  { name: "React", icon: <FaReact className="text-sky-400" /> },
+  { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> },
+  { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
+  { name: "Express.js", icon: <SiExpress className="text-gray-200" /> },
+  { name: "MongoDB", icon: <SiMongodb className="text-green-400" /> },
+  { name: "Java", icon: <FaJava className="text-red-400" /> },
+  { name: "MySQL", icon: <SiMysql className="text-blue-400" /> },
+  { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
+  { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+  { name: "C", icon: <SiC className="text-blue-300" /> },
+  { name: "GitHub", icon: <FaGithub className="text-white" /> },
 ];
 
-const SkillsSection = () => {
-  const [heading, setHeading] = useInView()
+export default function SkillsSection() {
   return (
-    <section id="skills"
-      className=" relative  w-full py-20 px-10 mt-20 overflow-hidden ">
+    <section id="skills" className="relative w-full bg-black text-white py-24 px-6 md:px-12">
+      
+      <div className="absolute top-1/2 right-[-80px] w-[200px] h-[200px] md:w-[320px] md:h-[320px] bg-indigo-500/30 rounded-full blur-[100px] -translate-y-1/2 z-0 animate-float2"></div>
 
-      {/* Background Circle */}
-      <div
-        className="absolute top-20 -right-[200px]
-    w-[400px] h-[400px]
-    rounded-full bg-blue-600 blur-3xl opacity-30
-    z-0 animate-[aboutFloat_8s_ease-in-out_infinite]"
-      ></div>
+      <div className="absolute top-1/2 right-[40px] w-[150px] h-[150px] md:w-[260px] md:h-[260px] bg-blue-500/25 rounded-full blur-[100px] -translate-y-1/3 z-0 animate-float1"></div>
 
-      <div
-        className="absolute top-100 -left-[200px]
-    w-[422px] h-[451px]
-    rounded-full bg-indigo-600 blur-xl opacity-50
-    z-0 animate-[aboutFloat_8s_ease-in-out_infinite]"
-      ></div>
-
-      <div
-        className="absolute -bottom-5 -right-30
-    w-112.5 h-87.5
-    rounded-full bg-indigo-600 blur-2xl 
-    z-0 animate-[float1_10s_ease-in-out_infinite]"
-      ></div>
-      <div
-        className="absolute -bottom-10 right-40
-    w-75 h-75
-    rounded-full bg-blue-500 blur-2xl
-    z-0 animate-[float3_10s_ease-in-out_infinite]"
-      ></div>
-
-
-      {/* Heading */}
-      <div className="text-center mb-14">
-        <h2 className="text-5xl md:text-6xl font-bold text-indigo-400">
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
           My Skills
         </h2>
-        <p className="text-gray-400 mt-2">
-          Technologies I work with
+
+        <p className="text-gray-400 text-center max-w-2xl mx-auto mb-10">
+          Technologies and tools I use to build responsive, modern, and scalable web applications.
         </p>
-      </div>
 
-      {/* GRID LAYOUT */}
-      <div className=" grid 
-    grid-cols-[repeat(auto-fit,minmax(280px,1fr))] 
-    gap-10 
-    place-items-stretch">
-
-        {skills.map((items, idx) => (
-          <div
-            key={idx}
-            className="card z-15 bg-linear-to-br from-indigo-600 to-indigo-900 rounded-2xl flex flex-col gap-2 items-start pl w-full overflow-hidden cursor-pointer  transition-all duration-300 ease-out
-  shadow-[0_15px_30px_rgba(99,102,241,0.25)]
-  hover:shadow-[0_25px_60px_rgba(59,130,246,0.55)]
-  hover:-translate-y-2"
-          >
-            {/* Logo */}
-            <div className="logo flex items-center justify-center  w-full bg-indigo-950">
-              <img
-                className="w-50 h-50 object-cover"
-                src={items.LogoImage}
-                alt={items.CardHeading}
-                loading="lazy"
-              />
+        <div className="flex flex-wrap justify-center gap-4">
+          {skills.map((skill, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-3 px-5 py-3 rounded-full border border-gray-700 bg-zinc-900 hover:bg-zinc-800 hover:border-gray-500 transition-all duration-300 shadow-md"
+            >
+              <span className="text-2xl">{skill.icon}</span>
+              <span className="text-sm md:text-base font-medium whitespace-nowrap">
+                {skill.name}
+              </span>
             </div>
-
-            {/* Content */}
-            <div className="logoName text-start p-4">
-              <h2 className="text-2xl font-semibold">
-                {items.CardHeading}
-              </h2>
-
-              <ul className="text-sm my-2 text-gray-400 leading-loose">
-                <li>• {items.feature1}</li>
-                <li>• {items.feature2}</li>
-                <li>• {items.feature3}</li>
-                <li>• {items.feature4}</li>
-                <li>• {items.feature5}</li>
-              </ul>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
-};
-
-export default SkillsSection;
+}

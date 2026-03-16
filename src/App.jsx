@@ -6,6 +6,7 @@ import AboutSection from './components/AboutSection'
 import SkillsSection from './components/SkillsSection'
 import Footer from './components/Footer'
 import LoadingPage from './components/LoadingPage'
+import Project from './components/Project'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -34,6 +35,7 @@ const App = () => {
         <MainSection />
         <AboutSection />
         <SkillsSection />
+        <Project/>
         <Footer />
       </div>
     </>

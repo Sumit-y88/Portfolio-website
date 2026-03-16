@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="text-center sm:text-left">
             <h3 className="text-white text-lg md:text-xl font-bold mb-2">Sumit Yadav</h3>
             <p className="text-xs md:text-sm mb-2 md:mb-3">Computer Engineering Student</p>
-            <p className="text-xs md:text-sm">Frontend Developer</p>
+            <p className="text-xs md:text-sm">MERN Stack Developer</p>
           </div>
 
           {/* Quick Links */}
