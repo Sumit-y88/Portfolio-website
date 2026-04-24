@@ -14,7 +14,14 @@ export const HeroSection = () => {
 
   return (
     <section id="home" className="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 pb-16 pt-32">
-      <div className="grid w-full items-center gap-16 lg:grid-cols-2">
+      <div aria-hidden="true" className="hero-aceternity-bg">
+        <div className="hero-mesh" />
+        <div className="hero-grid" />
+        <div className="hero-beams" />
+        <div className="hero-vignette" />
+      </div>
+
+      <div className="relative z-10 grid w-full items-center gap-16 lg:grid-cols-2">
         <div className="text-center lg:text-left z-10">
           <div
             data-hero-reveal

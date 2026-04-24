@@ -79,7 +79,7 @@ export const HeroCodeSnippet = () => {
           <div className="flex">
             <span className="w-8 select-none text-slate-400 dark:text-slate-500">5</span>
             <span className="pl-12 text-amber-600 dark:text-amber-300">
-              "React", "Node.js", "Tailwind"
+              "React", "Node.js", "ExpressJS", "Tailwind CSS", "JavaScript"
             </span>
           </div>
 
