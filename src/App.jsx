@@ -4,6 +4,7 @@ import { LoadingScreen } from "./components/common/LoadingScreen";
 import { Footer } from "./components/layout/Footer";
 import { Navbar } from "./components/layout/Navbar";
 import { ScrollProgress } from "./components/ui/ScrollProgress";
+import { CustomCursor } from "./components/ui/CustomCursor";
 import { useGsapAnimations } from "./hooks/useGsapAnimations";
 import { useTheme } from "./hooks/useTheme";
 import { Home } from "./pages/Home";
@@ -58,6 +59,7 @@ const App = () => {
       {loading && <LoadingScreen isExiting={isExiting} />}
 
       <div className="relative min-h-screen overflow-x-hidden bg-slate-50 text-slate-950 transition-colors duration-500 dark:bg-slate-950 dark:text-white">
+        <CustomCursor />
         <ScrollProgress />
         <BackgroundOrbs />
         <Navbar theme={theme} toggleTheme={toggleTheme} />
