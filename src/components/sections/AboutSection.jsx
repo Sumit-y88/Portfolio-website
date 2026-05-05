@@ -20,7 +20,7 @@ const aboutHighlights = [
 ];
 
 export const AboutSection = () => (
-  <section id="aboutme" className="relative scroll-mt-28 py-24">
+  <section id="aboutme" className="relative scroll-mt-28 overflow-hidden py-24">
     <div aria-hidden="true" className="about-aceternity-bg" />
 
     <div className="relative z-10 mx-auto max-w-7xl px-6">

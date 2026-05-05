@@ -13,7 +13,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative flex min-h-screen items-center pb-16 pt-32">
+    <section id="home" className="relative flex min-h-screen items-center overflow-hidden pb-16 pt-28 sm:pt-32">
       <div data-hero-bg aria-hidden="true" className="hero-aceternity-bg">
         <div className="hero-mesh" />
         <div className="hero-grid" />
@@ -21,8 +21,8 @@ export const HeroSection = () => {
         <div className="hero-vignette" />
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
-        <div data-hero-text className="text-center lg:text-left z-10">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl min-w-0 items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
+        <div data-hero-text className="z-10 min-w-0 text-center lg:text-left">
           <div
             data-hero-reveal
             className="mx-auto mb-5 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-blue-200/50 bg-white/60 px-3 py-2 text-xs font-bold text-blue-700 shadow-sm backdrop-blur-md sm:px-4 sm:text-sm dark:border-cyan-300/20 dark:bg-white/[0.05] dark:text-cyan-200 lg:mx-0"
@@ -31,7 +31,7 @@ export const HeroSection = () => {
             Available for frontend and full-stack opportunities
           </div>
 
-          <h1 data-hero-reveal className="text-5xl font-black tracking-[-0.06em] text-slate-950 md:text-7xl dark:text-white">
+          <h1 data-hero-reveal className="text-4xl font-black tracking-[-0.04em] text-slate-950 sm:text-5xl md:text-7xl md:tracking-[-0.06em] dark:text-white">
             Hi, I'm{" "}
             <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-400 bg-clip-text text-transparent drop-shadow-sm pb-2 pr-4 inline-block">
               Sumit Yadav
@@ -72,7 +72,7 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        <div data-hero-image className="relative mx-auto w-full lg:ml-auto">
+        <div data-hero-image className="relative mx-auto w-full min-w-0 max-w-full lg:ml-auto">
           <HeroCodeSnippet />
         </div>
       </div>

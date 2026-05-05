@@ -21,8 +21,8 @@ export const useLocomotiveScroll = (containerRef, enabled = true) => {
       const locoScroll = new LocomotiveScroll({
         el: containerRef.current,
         smooth: true,
-        lerp: 0.08,
-        multiplier: 0.9,
+        lerp: 0.1,
+        multiplier: 1.0,
         smartphone: { smooth: false },
         tablet: { smooth: false },
         class: "is-inview", // class applied to in-view elements
@@ -40,6 +40,7 @@ export const useLocomotiveScroll = (containerRef, enabled = true) => {
       document.fonts?.ready?.then(update);
       setTimeout(update, 250);
       setTimeout(update, 900);
+      setTimeout(update, 2000);
 
       // Expose the instance on the window so other scripts (GSAP proxy,
       // navbar, progress bar) can access it without prop-drilling.

@@ -75,18 +75,18 @@ export const Navbar = ({ theme, toggleTheme }) => {
 
   return (
     <header
-      className={`fixed left-3 right-3 z-[60] mx-auto max-w-[1120px] rounded-full border border-white/50 px-3 py-2 transition-all duration-300 ${
+      className={`fixed left-1/2 z-[60] w-[calc(100%-1rem)] max-w-[1120px] -translate-x-1/2 rounded-full border border-white/50 px-2 py-2 transition-all duration-300 sm:w-[calc(100%-1.5rem)] sm:px-3 ${
         isScrolled 
           ? "top-3 bg-white/65 shadow-md backdrop-blur-md dark:border-white/5 dark:bg-slate-950/65" 
           : "top-4 bg-white/70 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/60 dark:shadow-[0_20px_60px_rgba(0,0,0,0.22)]"
       }`}
     >
-      <nav className="flex items-center justify-between gap-4">
+      <nav className="flex min-w-0 items-center justify-between gap-2 sm:gap-4">
         <Logo />
 
         <NavLinks className="hidden md:flex" />
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           <div className="hidden md:block">
             <Button onClick={handleEmailClick}>
@@ -96,7 +96,7 @@ export const Navbar = ({ theme, toggleTheme }) => {
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white/80 text-slate-900 md:hidden dark:border-white/10 dark:bg-white/10 dark:text-white"
+            className="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white/80 text-slate-900 md:hidden sm:h-11 sm:w-11 dark:border-white/10 dark:bg-white/10 dark:text-white"
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
           >

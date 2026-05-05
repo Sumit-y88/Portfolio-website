@@ -90,7 +90,8 @@ export const useGsapAnimations = (isReady) => {
       const cleanupProxy = loco ? setupLocoProxy(loco) : undefined;
 
       // Refresh ScrollTrigger to ensure correct height calculations
-      const timeout = setTimeout(() => ScrollTrigger.refresh(), 500);
+      const timeout = setTimeout(() => ScrollTrigger.refresh(), 600);
+      const timeout2 = setTimeout(() => ScrollTrigger.refresh(), 1500);
 
       const stCtx = gsap.context(() => {
         /* ═══════════════════════════════════════════════════════
@@ -125,61 +126,6 @@ export const useGsapAnimations = (isReady) => {
             },
           );
         });
-
-        /* ═══════════════════════════════════════════════════════
-           2. HERO — Scroll-Fade Parallax
-           As the user scrolls past the hero, text fades out
-           and moves up while the code snippet moves at a
-           different rate, creating a parallax depth split.
-           ═══════════════════════════════════════════════════════ */
-        const heroSection = document.querySelector("#home");
-        if (heroSection) {
-          const heroText = heroSection.querySelector("[data-hero-text]");
-          const heroSnippet = heroSection.querySelector("[data-hero-snippet]");
-          const heroBg = heroSection.querySelector("[data-hero-bg]");
-
-          if (heroText) {
-            gsap.to(heroText, {
-              yPercent: -30,
-              opacity: 0,
-              ease: "none",
-              scrollTrigger: {
-                trigger: heroSection,
-                start: "top top",
-                end: "bottom top",
-                scrub: 0.8,
-              },
-            });
-          }
-
-          if (heroSnippet) {
-            gsap.to(heroSnippet, {
-              yPercent: -15,
-              opacity: 0.3,
-              ease: "none",
-              scrollTrigger: {
-                trigger: heroSection,
-                start: "top top",
-                end: "bottom top",
-                scrub: 1.2,
-              },
-            });
-          }
-
-          if (heroBg) {
-            gsap.to(heroBg, {
-              opacity: 0.2,
-              scale: 1.05,
-              ease: "none",
-              scrollTrigger: {
-                trigger: heroSection,
-                start: "center center",
-                end: "bottom top",
-                scrub: 1,
-              },
-            });
-          }
-        }
 
         /* ═══════════════════════════════════════════════════════
            3. SECTION TITLES — Staggered Reveal
@@ -425,6 +371,7 @@ export const useGsapAnimations = (isReady) => {
 
       return () => {
         clearTimeout(timeout);
+        clearTimeout(timeout2);
         cleanupProxy?.();
         stCtx.revert();
       };

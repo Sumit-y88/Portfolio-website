@@ -4,7 +4,7 @@ import { SkillBadge } from "../ui/SkillBadge";
 
 export const SkillsSection = () => {
   return (
-    <section id="skills" className="relative scroll-mt-28 px-6 py-24">
+    <section id="skills" className="relative scroll-mt-28 overflow-hidden px-6 py-24">
       {/* Background Gradients */}
       <div data-parallax="-18" className="absolute right-0 top-28 h-[500px] w-[500px] rounded-full bg-cyan-400/10 blur-[100px] dark:bg-cyan-500/10" />
       <div data-parallax="12" className="absolute -left-20 bottom-0 h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-[100px] dark:bg-blue-600/10" />

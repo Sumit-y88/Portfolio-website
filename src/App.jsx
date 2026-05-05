@@ -44,7 +44,7 @@ const App = () => {
   }, [loading, theme]);
 
   return (
-    <div className="bg-slate-50 text-slate-950 transition-colors duration-500 dark:bg-slate-950 dark:text-white">
+    <div className="bg-slate-50 text-slate-950 transition-colors duration-500 dark:bg-slate-950 dark:text-white overflow-x-hidden w-full max-w-full">
       {loading && <LoadingScreen isExiting={isExiting} />}
 
       {/* Fixed elements must be outside Locomotive scroll container */}
@@ -52,12 +52,13 @@ const App = () => {
       <ScrollProgress />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
 
+      <BackgroundOrbs />
+
       <main
         ref={scrollContainerRef}
         data-scroll-container
         className="relative min-h-screen w-full"
       >
-        <BackgroundOrbs />
         <Home />
         <div data-scroll-section>
           <Footer />

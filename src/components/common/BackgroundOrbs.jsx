@@ -1,5 +1,5 @@
 export const BackgroundOrbs = () => (
-  <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-slate-50 dark:bg-slate-950" style={{ minHeight: '100%' }}>
+  <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-slate-50 dark:bg-slate-950">
     {/* Architectural Background Grid */}
     <div className="absolute inset-0 bg-grid-pattern [mask-image:radial-gradient(ellipse_80%_80%_at_50%_0%,#000_20%,transparent_100%)]" />
 

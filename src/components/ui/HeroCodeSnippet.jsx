@@ -3,26 +3,26 @@ import { SiTailwindcss, SiJavascript, SiTypescript } from "react-icons/si";
 
 export const HeroCodeSnippet = () => {
   return (
-    <div className="relative w-full max-w-[500px] mx-auto perspective-1000">
+    <div className="relative mx-auto w-full max-w-[500px] perspective-1000">
       {/* Background Glow */}
       <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-blue-500/30 via-cyan-400/20 to-emerald-400/20 blur-2xl dark:from-blue-500/20 dark:via-cyan-400/10 dark:to-emerald-400/10" />
 
       {/* Floating Icons */}
-      <div className="absolute -left-6 top-10 animate-float z-20" style={{ animationDelay: "0s" }}>
-        <div className="grid h-12 w-12 place-items-center rounded-2xl border border-white/20 bg-white/60 text-sky-500 shadow-xl backdrop-blur-md dark:border-white/10 dark:bg-slate-900/60">
-          <FaReact className="h-7 w-7 animate-[spin_10s_linear_infinite]" />
+      <div className="absolute -left-1 top-10 z-20 animate-float sm:-left-6" style={{ animationDelay: "0s" }}>
+        <div className="grid h-9 w-9 place-items-center rounded-xl border border-white/20 bg-white/60 text-sky-500 shadow-xl backdrop-blur-md sm:h-12 sm:w-12 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900/60">
+          <FaReact className="h-5 w-5 animate-[spin_10s_linear_infinite] sm:h-7 sm:w-7" />
         </div>
       </div>
 
-      <div className="absolute -right-8 top-32 animate-float z-20" style={{ animationDelay: "1.5s" }}>
-        <div className="grid h-14 w-14 place-items-center rounded-2xl border border-white/20 bg-white/60 text-cyan-500 shadow-xl backdrop-blur-md dark:border-white/10 dark:bg-slate-900/60">
-          <SiTailwindcss className="h-8 w-8" />
+      <div className="absolute -right-1 top-32 z-20 animate-float sm:-right-8" style={{ animationDelay: "1.5s" }}>
+        <div className="grid h-10 w-10 place-items-center rounded-xl border border-white/20 bg-white/60 text-cyan-500 shadow-xl backdrop-blur-md sm:h-14 sm:w-14 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900/60">
+          <SiTailwindcss className="h-6 w-6 sm:h-8 sm:w-8" />
         </div>
       </div>
 
-      <div className="absolute -bottom-6 left-16 animate-float z-20" style={{ animationDelay: "3s" }}>
-        <div className="grid h-12 w-12 place-items-center rounded-2xl border border-white/20 bg-white/60 text-green-500 shadow-xl backdrop-blur-md dark:border-white/10 dark:bg-slate-900/60">
-          <FaNodeJs className="h-7 w-7" />
+      <div className="absolute -bottom-3 left-10 z-20 animate-float sm:-bottom-6 sm:left-16" style={{ animationDelay: "3s" }}>
+        <div className="grid h-9 w-9 place-items-center rounded-xl border border-white/20 bg-white/60 text-green-500 shadow-xl backdrop-blur-md sm:h-12 sm:w-12 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900/60">
+          <FaNodeJs className="h-5 w-5 sm:h-7 sm:w-7" />
         </div>
       </div>
 
