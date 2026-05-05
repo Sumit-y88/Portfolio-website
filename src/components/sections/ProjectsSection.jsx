@@ -15,7 +15,7 @@ export const ProjectsSection = () => (
 
       <div className="mt-12 grid gap-8 md:grid-cols-2">
         {projects.map((project, idx) => (
-          <div key={project.title} className="reveal-on-scroll opacity-0" style={{ animationDelay: `${idx * 150}ms` }}>
+          <div key={project.title} data-project-card>
             <ProjectCard project={project} />
           </div>
         ))}

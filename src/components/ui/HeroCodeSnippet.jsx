@@ -43,9 +43,9 @@ export const HeroCodeSnippet = () => {
         </div>
 
         {/* Editor Content */}
-        <div className="p-5 text-sm font-mono leading-loose text-slate-600 dark:text-slate-300 sm:text-base">
-          <div className="flex">
-            <span className="w-8 select-none text-slate-400 dark:text-slate-500">1</span>
+        <div className="overflow-x-auto p-4 text-xs font-mono leading-loose text-slate-600 sm:p-5 sm:text-base dark:text-slate-300">
+          <div className="flex min-w-max">
+            <span className="w-8 shrink-0 select-none text-slate-400 dark:text-slate-500">1</span>
             <span>
               <span className="text-purple-600 dark:text-purple-400">const</span>{" "}
               <span className="text-blue-600 dark:text-blue-400">developer</span>{" "}
@@ -53,64 +53,64 @@ export const HeroCodeSnippet = () => {
             </span>
           </div>
           
-          <div className="flex">
-            <span className="w-8 select-none text-slate-400 dark:text-slate-500">2</span>
+          <div className="flex min-w-max">
+            <span className="w-8 shrink-0 select-none text-slate-400 dark:text-slate-500">2</span>
             <span className="pl-6">
               name<span className="text-purple-600 dark:text-purple-400">:</span>{" "}
               <span className="text-amber-600 dark:text-amber-300">"Sumit Yadav"</span>,
             </span>
           </div>
 
-          <div className="flex">
-            <span className="w-8 select-none text-slate-400 dark:text-slate-500">3</span>
+          <div className="flex min-w-max">
+            <span className="w-8 shrink-0 select-none text-slate-400 dark:text-slate-500">3</span>
             <span className="pl-6">
               role<span className="text-purple-600 dark:text-purple-400">:</span>{" "}
               <span className="text-amber-600 dark:text-amber-300">"Full Stack Engineer"</span>,
             </span>
           </div>
 
-          <div className="flex">
-            <span className="w-8 select-none text-slate-400 dark:text-slate-500">4</span>
+          <div className="flex min-w-max">
+            <span className="w-8 shrink-0 select-none text-slate-400 dark:text-slate-500">4</span>
             <span className="pl-6">
               skills<span className="text-purple-600 dark:text-purple-400">:</span> [
             </span>
           </div>
 
-          <div className="flex">
-            <span className="w-8 select-none text-slate-400 dark:text-slate-500">5</span>
+          <div className="flex min-w-max">
+            <span className="w-8 shrink-0 select-none text-slate-400 dark:text-slate-500">5</span>
             <span className="pl-12 text-amber-600 dark:text-amber-300">
               "React", "Node.js", "ExpressJS", "Tailwind CSS", "JavaScript"
             </span>
           </div>
 
-          <div className="flex">
-            <span className="w-8 select-none text-slate-400 dark:text-slate-500">6</span>
+          <div className="flex min-w-max">
+            <span className="w-8 shrink-0 select-none text-slate-400 dark:text-slate-500">6</span>
             <span className="pl-6">],</span>
           </div>
 
-          <div className="flex">
-            <span className="w-8 select-none text-slate-400 dark:text-slate-500">7</span>
+          <div className="flex min-w-max">
+            <span className="w-8 shrink-0 select-none text-slate-400 dark:text-slate-500">7</span>
             <span className="pl-6">
               hardWorker<span className="text-purple-600 dark:text-purple-400">:</span>{" "}
               <span className="text-cyan-600 dark:text-cyan-400">true</span>
             </span>
           </div>
 
-          <div className="flex">
-            <span className="w-8 select-none text-slate-400 dark:text-slate-500">8</span>
+          <div className="flex min-w-max">
+            <span className="w-8 shrink-0 select-none text-slate-400 dark:text-slate-500">8</span>
             <span>{"}"};</span>
           </div>
           
-          <div className="flex mt-2">
-            <span className="w-8 select-none text-slate-400 dark:text-slate-500">9</span>
+          <div className="mt-2 flex min-w-max">
+            <span className="w-8 shrink-0 select-none text-slate-400 dark:text-slate-500">9</span>
             <span>
               <span className="text-purple-600 dark:text-purple-400">export default</span>{" "}
               <span className="text-blue-600 dark:text-blue-400">developer</span>;
             </span>
           </div>
           
-          <div className="mt-3 flex">
-            <span className="w-8 select-none text-slate-400 dark:text-slate-500">10</span>
+          <div className="mt-3 flex min-w-max">
+            <span className="w-8 shrink-0 select-none text-slate-400 dark:text-slate-500">10</span>
             <span className="animate-pulse text-slate-400">|</span>
           </div>
 

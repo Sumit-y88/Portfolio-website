@@ -4,10 +4,19 @@ import { ProjectsSection } from "../components/sections/ProjectsSection";
 import { SkillsSection } from "../components/sections/SkillsSection";
 
 export const Home = () => (
-  <main>
-    <HeroSection />
-    <AboutSection />
-    <SkillsSection />
-    <ProjectsSection />
-  </main>
+  <>
+    <div data-scroll-section>
+      <HeroSection />
+    </div>
+    <div data-scroll-section>
+      <AboutSection />
+    </div>
+    <div data-scroll-section>
+      <SkillsSection />
+    </div>
+    <div data-scroll-section>
+      <ProjectsSection />
+    </div>
+  </>
 );
+

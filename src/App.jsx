@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BackgroundOrbs } from "./components/common/BackgroundOrbs";
 import { LoadingScreen } from "./components/common/LoadingScreen";
 import { Footer } from "./components/layout/Footer";
@@ -6,6 +6,7 @@ import { Navbar } from "./components/layout/Navbar";
 import { ScrollProgress } from "./components/ui/ScrollProgress";
 import { CustomCursor } from "./components/ui/CustomCursor";
 import { useGsapAnimations } from "./hooks/useGsapAnimations";
+import { useLocomotiveScroll } from "./hooks/useLocomotiveScroll";
 import { useTheme } from "./hooks/useTheme";
 import { Home } from "./pages/Home";
 
@@ -13,11 +14,14 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const scrollContainerRef = useRef(null);
 
-  useGsapAnimations(isExiting);
+  useLocomotiveScroll(scrollContainerRef, !loading);
+
+  useGsapAnimations(!loading);
 
   useEffect(() => {
-    // 1. Loading Screen Logic
+    // Loading Screen Logic
     const timer = setTimeout(() => {
       setIsExiting(true);
 
@@ -26,47 +30,40 @@ const App = () => {
       }, 800);
     }, 2200);
 
-    // 2. Scroll Reveal Logic (replaces ScrollTrigger)
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up");
-            entry.target.classList.remove("opacity-0", "reveal-on-scroll");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-
-    // Give React time to render DOM after loading unmounts before observing
-    const observeTimer = setTimeout(() => {
-      document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
-        observer.observe(el);
-      });
-    }, 100);
-
     return () => {
       clearTimeout(timer);
-      clearTimeout(observeTimer);
-      observer.disconnect();
     };
   }, []);
 
+  // Update Locomotive Scroll when layout-affecting state changes.
+  useEffect(() => {
+    const locoScroll = window.__locomotiveScroll;
+    if (locoScroll) {
+      setTimeout(() => locoScroll.update(), 400);
+    }
+  }, [loading, theme]);
+
   return (
-    <>
+    <div className="bg-slate-50 text-slate-950 transition-colors duration-500 dark:bg-slate-950 dark:text-white">
       {loading && <LoadingScreen isExiting={isExiting} />}
 
-      <div className="relative min-h-screen overflow-x-hidden bg-slate-50 text-slate-950 transition-colors duration-500 dark:bg-slate-950 dark:text-white">
-        <CustomCursor />
-        <ScrollProgress />
+      {/* Fixed elements must be outside Locomotive scroll container */}
+      <CustomCursor />
+      <ScrollProgress />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
+
+      <main
+        ref={scrollContainerRef}
+        data-scroll-container
+        className="relative min-h-screen w-full"
+      >
         <BackgroundOrbs />
-        <Navbar theme={theme} toggleTheme={toggleTheme} />
         <Home />
-        <Footer />
-      </div>
-    </>
+        <div data-scroll-section>
+          <Footer />
+        </div>
+      </main>
+    </div>
   );
 };
 

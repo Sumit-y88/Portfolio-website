@@ -29,7 +29,7 @@ export const SkillBadge = ({ skill }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative flex w-48 shrink-0 cursor-pointer items-center gap-4 overflow-hidden rounded-2xl border border-slate-200/50 bg-white/50 px-5 py-4 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-md transition-all duration-300 dark:border-white/10 dark:bg-slate-900/40"
+      className="group relative flex w-full cursor-pointer items-center gap-3 overflow-hidden rounded-xl border border-slate-200/50 bg-white/50 px-3 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-md transition-all duration-300 sm:gap-4 sm:rounded-2xl sm:px-5 sm:py-4 md:w-48 dark:border-white/10 dark:bg-slate-900/40"
     >
       <div
         className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
@@ -46,10 +46,10 @@ export const SkillBadge = ({ skill }) => {
         }}
       />
 
-      <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100/60 shadow-inner dark:bg-slate-800/60">
-        <Icon className={`text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_12px_currentColor] ${skill.color}`} />
+      <div className="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100/60 shadow-inner sm:h-12 sm:w-12 sm:rounded-xl dark:bg-slate-800/60">
+        <Icon className={`text-lg transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_12px_currentColor] sm:text-2xl ${skill.color}`} />
       </div>
-      <span className="relative z-10 truncate whitespace-nowrap font-medium tracking-wide text-slate-800 transition-colors group-hover:text-blue-600 dark:text-slate-200 dark:group-hover:text-cyan-400">
+      <span className="relative z-10 text-sm font-medium tracking-wide text-slate-800 transition-colors group-hover:text-blue-600 sm:text-base sm:truncate sm:whitespace-nowrap dark:text-slate-200 dark:group-hover:text-cyan-400">
         {skill.name}
       </span>
     </div>

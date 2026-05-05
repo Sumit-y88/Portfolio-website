@@ -13,19 +13,19 @@ export const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 pb-16 pt-32">
-      <div aria-hidden="true" className="hero-aceternity-bg">
+    <section id="home" className="relative flex min-h-screen items-center pb-16 pt-32">
+      <div data-hero-bg aria-hidden="true" className="hero-aceternity-bg">
         <div className="hero-mesh" />
         <div className="hero-grid" />
         <div className="hero-beams" />
         <div className="hero-vignette" />
       </div>
 
-      <div className="relative z-10 grid w-full items-center gap-16 lg:grid-cols-2">
-        <div className="text-center lg:text-left z-10">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
+        <div data-hero-text className="text-center lg:text-left z-10">
           <div
             data-hero-reveal
-            className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200/50 bg-white/60 px-4 py-2 text-sm font-bold text-blue-700 shadow-sm backdrop-blur-md dark:border-cyan-300/20 dark:bg-white/[0.05] dark:text-cyan-200 lg:mx-0"
+            className="mx-auto mb-5 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-blue-200/50 bg-white/60 px-3 py-2 text-xs font-bold text-blue-700 shadow-sm backdrop-blur-md sm:px-4 sm:text-sm dark:border-cyan-300/20 dark:bg-white/[0.05] dark:text-cyan-200 lg:mx-0"
           >
             <Sparkles className="h-4 w-4" />
             Available for frontend and full-stack opportunities

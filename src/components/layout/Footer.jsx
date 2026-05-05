@@ -4,7 +4,7 @@ import { navigationLinks } from "../../data/navigation";
 import { socialLinks } from "../../data/socialLinks";
 
 export const Footer = () => (
-  <footer className="border-t border-slate-200 bg-white/60 py-10 text-slate-600 backdrop-blur dark:border-white/10 dark:bg-slate-950/70 dark:text-slate-300">
+  <footer data-footer className="border-t border-slate-200 bg-white/60 py-10 text-slate-600 backdrop-blur dark:border-white/10 dark:bg-slate-950/70 dark:text-slate-300">
     <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[1.2fr_0.8fr_1fr]">
       <div>
         <h3 className="text-xl font-black text-slate-950 dark:text-white">Sumit Yadav</h3>

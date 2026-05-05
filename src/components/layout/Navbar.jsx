@@ -26,21 +26,56 @@ export const Navbar = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    document.body.classList.toggle("overflow-hidden", menuOpen);
-    return () => document.body.classList.remove("overflow-hidden");
+    const locoScroll = window.__locomotiveScroll;
+
+    if (menuOpen) {
+      document.body.classList.add("overflow-hidden");
+      if (locoScroll) locoScroll.stop();
+    } else {
+      document.body.classList.remove("overflow-hidden");
+      if (locoScroll) locoScroll.start();
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+      if (window.__locomotiveScroll) window.__locomotiveScroll.start();
+    };
   }, [menuOpen]);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleNativeScroll = () => {
       setIsScrolled(window.scrollY > 80);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    let locoScroll;
+    const handleLocoScroll = (obj) => {
+      setIsScrolled(obj.scroll.y > 80);
+    };
+
+    const initLoco = () => {
+      locoScroll = window.__locomotiveScroll;
+      if (locoScroll) {
+        locoScroll.on("scroll", handleLocoScroll);
+      }
+    };
+
+    if (window.__locomotiveScroll) {
+      initLoco();
+    } else {
+      window.addEventListener("locomotiveReady", initLoco, { once: true });
+    }
+
+    window.addEventListener("scroll", handleNativeScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleNativeScroll);
+      window.removeEventListener("locomotiveReady", initLoco);
+    };
   }, []);
 
   return (
     <header
-      className={`fixed left-1/2 z-[60] w-[min(1120px,calc(100%-24px))] -translate-x-1/2 rounded-full border border-white/50 px-3 py-2 transition-all duration-300 ${
+      className={`fixed left-3 right-3 z-[60] mx-auto max-w-[1120px] rounded-full border border-white/50 px-3 py-2 transition-all duration-300 ${
         isScrolled 
           ? "top-3 bg-white/65 shadow-md backdrop-blur-md dark:border-white/5 dark:bg-slate-950/65" 
           : "top-4 bg-white/70 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/60 dark:shadow-[0_20px_60px_rgba(0,0,0,0.22)]"
@@ -53,9 +88,11 @@ export const Navbar = ({ theme, toggleTheme }) => {
 
         <div className="flex items-center gap-2">
           <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-          <Button onClick={handleEmailClick} className="hidden md:inline-flex">
-            Contact Me
-          </Button>
+          <div className="hidden md:block">
+            <Button onClick={handleEmailClick}>
+              Contact Me
+            </Button>
+          </div>
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
