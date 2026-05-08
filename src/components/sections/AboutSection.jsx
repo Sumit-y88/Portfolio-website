@@ -1,3 +1,4 @@
+import { createElement } from "react";
 import { SectionTitle } from "../ui/SectionTitle";
 import { BookOpen, Code2, Sparkles } from "lucide-react";
 
@@ -20,7 +21,7 @@ const aboutHighlights = [
 ];
 
 export const AboutSection = () => (
-  <section id="aboutme" className="relative scroll-mt-28 overflow-hidden py-24">
+  <section id="aboutme" className="section-blend relative scroll-mt-28 overflow-hidden py-24">
     <div aria-hidden="true" className="about-aceternity-bg" />
 
     <div className="relative z-10 mx-auto max-w-7xl px-6">
@@ -62,10 +63,10 @@ export const AboutSection = () => (
           <div data-about-timeline className="absolute bottom-0 left-6 top-0 w-px bg-gradient-to-b from-transparent via-blue-400/70 to-transparent dark:via-cyan-300/60" />
 
           <div className="space-y-8">
-            {aboutHighlights.map(({ title, icon: Icon, text }) => (
+            {aboutHighlights.map(({ title, icon, text }) => (
               <div key={title} data-about-highlight className="group relative grid grid-cols-[3rem_1fr] gap-5">
                 <div className="relative z-10 grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-blue-600 shadow-[0_0_35px_rgba(37,99,235,0.18)] transition-colors duration-300 group-hover:border-cyan-300 group-hover:text-cyan-600 dark:border-white/10 dark:bg-slate-950 dark:text-cyan-300">
-                  <Icon className="h-5 w-5" />
+                  {createElement(icon, { className: "h-5 w-5" })}
                 </div>
                 <div className="border-b border-slate-200/70 pb-8 last:border-b-0 last:pb-0 dark:border-white/10">
                   <h3 className="text-xl font-black text-slate-950 dark:text-white">{title}</h3>

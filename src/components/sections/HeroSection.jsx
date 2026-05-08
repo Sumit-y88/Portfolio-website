@@ -3,6 +3,7 @@ import { Download, Sparkles } from "lucide-react";
 import { Button } from "../ui/Button";
 import { socialLinks } from "../../data/socialLinks";
 import { HeroCodeSnippet } from "../ui/HeroCodeSnippet";
+import { scrollToSection } from "../../utils/scrollToSection";
 
 export const HeroSection = () => {
   const handleResumeDownload = () => {
@@ -13,7 +14,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative flex min-h-screen items-center overflow-hidden pb-16 pt-28 sm:pt-32">
+    <section id="home" className="section-blend section-blend-hero relative flex min-h-screen items-center overflow-hidden pb-24 pt-28 sm:pt-32">
       <div data-hero-bg aria-hidden="true" className="hero-aceternity-bg">
         <div className="hero-mesh" />
         <div className="hero-grid" />
@@ -51,7 +52,12 @@ export const HeroSection = () => {
               <Download className="h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
               Download Resume
             </Button>
-            <Button as="a" href="#project" variant="secondary">
+            <Button
+              as="a"
+              href="#project"
+              variant="secondary"
+              onClick={(event) => scrollToSection(event, "#project")}
+            >
               View Projects
             </Button>
           </div>

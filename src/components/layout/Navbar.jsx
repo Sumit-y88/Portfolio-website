@@ -5,6 +5,7 @@ import { ThemeToggle } from "../common/ThemeToggle";
 import { Button } from "../ui/Button";
 import { navigationLinks } from "../../data/navigation";
 import { handleEmailClick } from "../../utils/contact";
+import { scrollToSection } from "../../utils/scrollToSection";
 
 const NavLinks = ({ onClick, className = "" }) => (
   <div className={`items-center gap-2 ${className}`}>
@@ -12,7 +13,10 @@ const NavLinks = ({ onClick, className = "" }) => (
       <a
         key={link.href}
         href={link.href}
-        onClick={onClick}
+        onClick={(event) => {
+          scrollToSection(event, link.href);
+          onClick?.();
+        }}
         className="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition-all duration-300 hover:bg-slate-950 hover:text-white dark:text-slate-300 dark:hover:bg-white dark:hover:text-slate-950"
       >
         {link.label}
