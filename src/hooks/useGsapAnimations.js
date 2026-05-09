@@ -148,15 +148,17 @@ const splitAndAnimateText = (el, scrollTriggerConfig = null) => {
   const text = el.textContent;
   el.setAttribute("aria-label", text);
   el.innerHTML = text
-    .split("")
-    .map((char) =>
-      char === " "
-        ? `<span style="display:inline-block;width:0.3em"> </span>`
-        : `<span style="display:inline-block;will-change:transform,opacity">${char}</span>`
-    )
-    .join("");
+    .split(" ")
+    .map((word) => {
+      const chars = word
+        .split("")
+        .map((char) => `<span data-char style="display:inline-block;will-change:transform,opacity">${char}</span>`)
+        .join("");
+      return `<span style="display:inline-block;white-space:nowrap">${chars}</span>`;
+    })
+    .join(" ");
 
-  const chars = el.querySelectorAll("span");
+  const chars = el.querySelectorAll("[data-char]");
   const animProps = {
     y: "120%",
     opacity: 0,

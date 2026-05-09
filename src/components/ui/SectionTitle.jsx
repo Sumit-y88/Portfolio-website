@@ -1,5 +1,5 @@
 export const SectionTitle = ({ eyebrow, title, description, align = "center" }) => (
-  <div data-section-title className={`mx-auto mb-12 max-w-3xl ${align === "center" ? "text-center" : "text-left"}`}>
+  <div data-section-title className={`mx-auto mb-12 max-w-4xl ${align === "center" ? "text-center" : "text-left"}`}>
     {eyebrow && (
       <p data-section-eyebrow className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-blue-600 dark:text-cyan-300">
         {eyebrow}

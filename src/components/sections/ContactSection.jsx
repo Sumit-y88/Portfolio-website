@@ -193,7 +193,7 @@ export const ContactSection = () => {
             </h3>
             <a
               href="mailto:sumit.yadav.0287@gmail.com"
-              className="mt-4 block break-all text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700 dark:text-cyan-300 dark:hover:text-cyan-200"
+              className="mt-4 block text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700 dark:text-cyan-300 dark:hover:text-cyan-200"
             >
               sumit.yadav.0287@gmail.com
             </a>

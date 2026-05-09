@@ -31,7 +31,7 @@ export const Footer = () => (
 
       <div>
         <h4 className="font-bold text-slate-950 dark:text-white">Get in Touch</h4>
-        <a href="mailto:sumit.yadav.0287@gmail.com" className="mt-3 block break-all text-sm transition-colors hover:text-blue-600 dark:hover:text-cyan-300">
+        <a href="mailto:sumit.yadav.0287@gmail.com" className="mt-3 block text-sm transition-colors hover:text-blue-600 dark:hover:text-cyan-300">
           sumit.yadav.0287@gmail.com
         </a>
         <p className="mt-2 flex items-center gap-2 text-sm">

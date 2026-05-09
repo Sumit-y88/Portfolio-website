@@ -19,6 +19,9 @@
 
 * {
   box-sizing: border-box;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
 }
 
 html {

@@ -54,7 +54,7 @@ export const LoadingScreen = ({ isExiting }) => {
   return (
     <div
       ref={rootRef}
-      className="fixed inset-0 z-[100] grid place-items-center overflow-hidden bg-slate-950 text-white"
+      className="fixed inset-0 z-[100] grid place-items-center overflow-hidden bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-white"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_40%),radial-gradient(circle_at_70%_60%,rgba(34,211,238,0.15),transparent_40%)]" />
       <div data-loader-orb className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-blue-600/20 blur-[80px]" />
@@ -67,18 +67,18 @@ export const LoadingScreen = ({ isExiting }) => {
           style={{ perspective: "1000px" }}
         >
           {nameLetters.map((char, index) => (
-            <span key={index} className={char === " " ? "w-2 md:w-4" : "inline-block origin-bottom text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-400"}>
+            <span key={index} className={char === " " ? "w-2 md:w-4" : "inline-block origin-bottom text-transparent bg-clip-text bg-gradient-to-br from-slate-900 to-slate-500 dark:from-white dark:to-slate-400"}>
               {char}
             </span>
           ))}
-          <span className="inline-block origin-bottom text-cyan-400">.</span>
+          <span className="inline-block origin-bottom text-blue-600 dark:text-cyan-400">.</span>
         </div>
         
-        <p className="mt-6 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-slate-500">
+        <p className="mt-6 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-slate-600 dark:text-slate-500">
           Loading Experience
         </p>
         
-        <div className="mt-8 h-1 w-48 sm:w-64 overflow-hidden rounded-full bg-white/5">
+        <div className="mt-8 h-1 w-48 sm:w-64 overflow-hidden rounded-full bg-slate-900/10 dark:bg-white/5">
           <div ref={progressRef} className="h-full w-full bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400" />
         </div>
       </div>

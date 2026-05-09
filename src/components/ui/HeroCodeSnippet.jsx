@@ -1,26 +1,73 @@
 import { FaReact, FaNodeJs } from "react-icons/fa";
 import { SiTailwindcss, SiJavascript, SiTypescript } from "react-icons/si";
+import { useRef, useState, useCallback } from "react";
 
 export const HeroCodeSnippet = () => {
+  const cardRef = useRef(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const [transformStyle, setTransformStyle] = useState("");
+
+  const handleMouseMove = useCallback((e) => {
+    if (!cardRef.current) return;
+
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    setPosition({ x, y });
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Max rotation in degrees
+    const maxRotate = 6;
+    
+    // Calculate rotation values. Hover top -> rotateX positive. Hover bottom -> rotateX negative.
+    const rotateX = ((y - centerY) / centerY) * -maxRotate;
+    // Hover left -> rotateY negative. Hover right -> rotateY positive.
+    const rotateY = ((x - centerX) / centerX) * maxRotate;
+
+    setTransformStyle(`perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`);
+  }, []);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTransformStyle("perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)");
+  };
+
   return (
-    <div className="relative mx-auto w-full max-w-[500px] perspective-1000">
+    <div 
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{ transform: transformStyle }}
+      className={`group relative mx-auto w-full max-w-[500px] transition-all ease-out ${
+        isHovered ? "duration-100" : "duration-500"
+      }`}
+    >
       {/* Background Glow */}
       <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-blue-500/30 via-cyan-400/20 to-emerald-400/20 blur-2xl dark:from-blue-500/20 dark:via-cyan-400/10 dark:to-emerald-400/10" />
 
       {/* Floating Icons */}
-      <div className="absolute -left-1 top-10 z-20 animate-float sm:-left-6" style={{ animationDelay: "0s" }}>
+      <div className="absolute -left-1 top-10 z-20 sm:-left-6">
         <div className="grid h-9 w-9 place-items-center rounded-xl border border-white/20 bg-white/60 text-sky-500 shadow-xl backdrop-blur-md sm:h-12 sm:w-12 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900/60">
           <FaReact className="h-5 w-5 animate-[spin_10s_linear_infinite] sm:h-7 sm:w-7" />
         </div>
       </div>
 
-      <div className="absolute -right-1 top-32 z-20 animate-float sm:-right-8" style={{ animationDelay: "1.5s" }}>
+      <div className="absolute -right-1 top-32 z-20 sm:-right-8">
         <div className="grid h-10 w-10 place-items-center rounded-xl border border-white/20 bg-white/60 text-cyan-500 shadow-xl backdrop-blur-md sm:h-14 sm:w-14 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900/60">
           <SiTailwindcss className="h-6 w-6 sm:h-8 sm:w-8" />
         </div>
       </div>
 
-      <div className="absolute -bottom-3 left-10 z-20 animate-float sm:-bottom-6 sm:left-16" style={{ animationDelay: "3s" }}>
+      <div className="absolute -bottom-3 left-10 z-20 sm:-bottom-6 sm:left-16">
         <div className="grid h-9 w-9 place-items-center rounded-xl border border-white/20 bg-white/60 text-green-500 shadow-xl backdrop-blur-md sm:h-12 sm:w-12 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900/60">
           <FaNodeJs className="h-5 w-5 sm:h-7 sm:w-7" />
         </div>
@@ -29,6 +76,16 @@ export const HeroCodeSnippet = () => {
       {/* Main Code Editor Window */}
       <div className="relative z-10 w-full overflow-hidden rounded-2xl border border-slate-200/50 bg-white/70 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/80">
         
+        {/* Inner Ambient Spotlight */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-50"
+          style={{
+            background: isHovered 
+              ? `radial-gradient(800px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.1), transparent 40%)` 
+              : "",
+          }}
+        />
+
         {/* Editor Header */}
         <div className="flex items-center gap-2 border-b border-slate-200/50 bg-slate-100/50 px-4 py-3 dark:border-white/5 dark:bg-slate-800/50">
           <div className="flex gap-1.5">
