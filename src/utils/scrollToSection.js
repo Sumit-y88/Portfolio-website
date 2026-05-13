@@ -6,19 +6,13 @@ export const scrollToSection = (event, href) => {
 
   event?.preventDefault();
 
-  const locoScroll = window.__locomotiveScroll;
   const offset = -96;
+  const top = target.getBoundingClientRect().top + window.scrollY + offset;
 
-  if (locoScroll) {
-    locoScroll.scrollTo(target, {
-      duration: 800,
-      offset,
-      disableLerp: false,
-    });
-  } else {
-    const top = target.getBoundingClientRect().top + window.scrollY + offset;
-    window.scrollTo({ top, behavior: "smooth" });
-  }
+  window.scrollTo({
+    top,
+    behavior: "smooth",
+  });
 
   window.history.pushState(null, "", href);
 };

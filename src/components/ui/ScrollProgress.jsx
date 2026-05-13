@@ -8,34 +8,19 @@ export const ScrollProgress = () => {
   const progressRef = useRef(null);
 
   useEffect(() => {
-    let tween;
-
-    const initProgress = () => {
-      const container = document.querySelector("[data-scroll-container]");
-      if (!container) return;
-
-      tween = gsap.to(progressRef.current, {
-        scaleX: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          scroller: container,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.25,
-        },
-      });
-    };
-
-    if (window.__locomotiveScroll) {
-      initProgress();
-    } else {
-      window.addEventListener("locomotiveProxyReady", initProgress, { once: true });
-    }
+    const tween = gsap.to(progressRef.current, {
+      scaleX: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: document.body,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.25,
+      },
+    });
 
     return () => {
       if (tween) tween.scrollTrigger?.kill();
-      window.removeEventListener("locomotiveProxyReady", initProgress);
     };
   }, []);
 

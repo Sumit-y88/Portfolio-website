@@ -6,40 +6,6 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 /* ─────────────────────────────────────────────────────────────
-   Locomotive Scroll proxy — fixed cleanup order + listener leak
-   ───────────────────────────────────────────────────────────── */
-const setupLocoProxy = (locoScroll) => {
-  const scrollEl = locoScroll.el;
-  const refreshLoco = () => locoScroll.update();
-
-  locoScroll.on("scroll", ScrollTrigger.update);
-
-  ScrollTrigger.scrollerProxy(scrollEl, {
-    scrollTop(value) {
-      if (arguments.length) {
-        locoScroll.scrollTo(value, { duration: 0, disableLerp: true });
-      }
-      return locoScroll.scroll.instance.scroll.y;
-    },
-    getBoundingClientRect() {
-      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-    },
-    pinType: scrollEl.style.transform ? "transform" : "fixed",
-  });
-
-  ScrollTrigger.addEventListener("refresh", refreshLoco);
-  ScrollTrigger.defaults({ scroller: scrollEl });
-  ScrollTrigger.refresh();
-
-  window.dispatchEvent(new CustomEvent("locomotiveProxyReady"));
-
-  return () => {
-    locoScroll.off("scroll", ScrollTrigger.update);
-    ScrollTrigger.removeEventListener("refresh", refreshLoco);
-  };
-};
-
-/* ─────────────────────────────────────────────────────────────
    Shared easing presets — used throughout for consistency
    ───────────────────────────────────────────────────────────── */
 const EASE = {
@@ -447,20 +413,20 @@ const initFloatingElements = () => {
    Scroll velocity skew — elements skew slightly as you scroll fast
    Usage: add data-skew to any section or element
    ───────────────────────────────────────────────────────────── */
-const initScrollSkew = (locoScroll) => {
-  if (!locoScroll) return;
-
+const initScrollSkew = () => {
   let currentSkew = 0;
   const maxSkew = 5; // degrees
 
-  locoScroll.on("scroll", ({ delta }) => {
-    const velocity = delta?.y ?? 0;
-    const target = Math.max(-maxSkew, Math.min(maxSkew, velocity * 0.06));
-    currentSkew += (target - currentSkew) * 0.1;
+  ScrollTrigger.create({
+    onUpdate: (self) => {
+      const velocity = self.getVelocity();
+      const target = Math.max(-maxSkew, Math.min(maxSkew, velocity * 0.0015));
+      currentSkew += (target - currentSkew) * 0.1;
 
-    gsap.utils.toArray("[data-skew]").forEach((el) => {
-      gsap.set(el, { skewY: currentSkew });
-    });
+      gsap.utils.toArray("[data-skew]").forEach((el) => {
+        gsap.set(el, { skewY: currentSkew });
+      });
+    },
   });
 };
 
@@ -535,17 +501,14 @@ export const useGsapAnimations = (isReady, heroRef) => {
       });
     }, heroRef);
 
-    /* ── Wait for Locomotive Scroll ── */
-    const locoScroll = window.__locomotiveScroll;
-
-    const initScrollTrigger = (loco) => {
-      const cleanupProxy = loco ? setupLocoProxy(loco) : undefined;
-      const scroller = loco ? loco.el : window;
+    /* ── Scroll Trigger & Effects ── */
+    const initScrollTrigger = () => {
+      const scroller = window;
 
       // Init effects that need the scroller
       initHorizontalScroll(scroller);
       initProgressBar(scroller);
-      initScrollSkew(loco);
+      initScrollSkew();
 
       // Wait for fonts + give images time to load
       let timeoutId;
@@ -872,16 +835,7 @@ export const useGsapAnimations = (isReady, heroRef) => {
       };
     };
 
-    let cleanupST;
-    const onReady = () => {
-      cleanupST = initScrollTrigger(window.__locomotiveScroll); // read fresh here
-    };
-
-    if (locoScroll) {
-      cleanupST = initScrollTrigger(locoScroll);
-    } else {
-      window.addEventListener("locomotiveReady", onReady, { once: true });
-    }
+    initScrollTrigger();
 
     return () => {
       cleanupCursor();
@@ -889,8 +843,6 @@ export const useGsapAnimations = (isReady, heroRef) => {
       cleanupTilt();
       cleanupImageHovers();
       heroCtx.revert();
-      if (cleanupST) cleanupST();
-      window.removeEventListener("locomotiveReady", onReady);
     };
-  }, [heroRef, isReady]);
+  }, [isReady, heroRef]);
 };

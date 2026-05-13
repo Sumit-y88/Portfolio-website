@@ -30,51 +30,24 @@ export const Navbar = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const locoScroll = window.__locomotiveScroll;
-
     if (menuOpen) {
       document.body.classList.add("overflow-hidden");
-      if (locoScroll) locoScroll.stop();
     } else {
       document.body.classList.remove("overflow-hidden");
-      if (locoScroll) locoScroll.start();
     }
 
     return () => {
       document.body.classList.remove("overflow-hidden");
-      if (window.__locomotiveScroll) window.__locomotiveScroll.start();
     };
   }, [menuOpen]);
 
   useEffect(() => {
-    const handleNativeScroll = () => {
+    const handleScroll = () => {
       setIsScrolled(window.scrollY > 80);
     };
 
-    let locoScroll;
-    const handleLocoScroll = (obj) => {
-      setIsScrolled(obj.scroll.y > 80);
-    };
-
-    const initLoco = () => {
-      locoScroll = window.__locomotiveScroll;
-      if (locoScroll) {
-        locoScroll.on("scroll", handleLocoScroll);
-      }
-    };
-
-    if (window.__locomotiveScroll) {
-      initLoco();
-    } else {
-      window.addEventListener("locomotiveReady", initLoco, { once: true });
-    }
-
-    window.addEventListener("scroll", handleNativeScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleNativeScroll);
-      window.removeEventListener("locomotiveReady", initLoco);
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
