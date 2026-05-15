@@ -1,5 +1,25 @@
 export const projects = [
   {
+    title: "JobTrackr",
+    description:
+      "An AI-powered MERN job application tracker with stage-based dashboards, resume match scoring, cover letter generation, analytics, OAuth, and notes management.",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80",
+    link: "https://ai-job-tracker-5zrn.vercel.app/",
+    github: "https://github.com/Sumit-y88/Ai-job-tracker",
+    techStack: ["React", "TypeScript", "Node.js", "MongoDB", "Gemini AI"],
+  },
+  {
+    title: "FormFlow",
+    description:
+      "A dynamic form builder and management system designed to streamline data collection and workflow.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80",
+    link: "https://formflow-nine-plum.vercel.app/",
+    github: "https://github.com/arjunrhetoric/formflow",
+    techStack: ["React", "Tailwind CSS", "Node.js"],
+  },
+  {
     title: "Chat Application",
     description:
       "A real-time chat website with authentication, rooms, messaging, and file sharing using Socket.IO.",
@@ -18,25 +38,5 @@ export const projects = [
     link: "https://password-manager-mern-bkri.vercel.app/",
     github: "https://github.com/Sumit-y88/password-manager-mern",
     techStack: ["MERN Stack", "Tailwind CSS", "Encryption"],
-  },
-  {
-    title: "FormFlow",
-    description:
-      "A dynamic form builder and management system designed to streamline data collection and workflow.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80",
-    link: "https://formflow-nine-plum.vercel.app/",
-    github: "https://github.com/arjunrhetoric/formflow",
-    techStack: ["React", "Tailwind CSS", "Node.js"],
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "A personal portfolio website built with React and Tailwind CSS to showcase skills and projects.",
-    image:
-      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1000&q=80",
-    link: "https://sumity88.in",
-    github: "https://github.com/Sumit-y88/Portfolio-website",
-    techStack: ["React", "Tailwind CSS", "GSAP"],
   },
 ];

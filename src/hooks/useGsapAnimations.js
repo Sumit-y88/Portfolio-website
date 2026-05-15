@@ -829,15 +829,15 @@ export const useGsapAnimations = (isReady, heroRef) => {
 
       return () => {
         clearTimeout(timeoutId);
-        cleanupProxy?.();                              // proxy torn down FIRST
         ScrollTrigger.getAll().forEach((t) => t.kill()); // kill stray triggers
         stCtx.revert();
       };
     };
 
-    initScrollTrigger();
+    const cleanupScrollTrigger = initScrollTrigger();
 
     return () => {
+      cleanupScrollTrigger?.();
       cleanupCursor();
       cleanupMagnetic();
       cleanupTilt();
