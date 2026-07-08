@@ -5,7 +5,7 @@ import { socialLinks } from "../../data/socialLinks";
 import { scrollToSection } from "../../utils/scrollToSection";
 
 export const Footer = () => (
-  <footer data-footer className="section-blend relative overflow-hidden bg-white/45 py-10 text-slate-600 backdrop-blur dark:bg-slate-950/55 dark:text-slate-300">
+  <footer data-footer className="section-blend relative overflow-hidden bg-slate-50 py-10 text-slate-600 dark:bg-slate-950 dark:text-slate-300">
     <div className="relative z-10 mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[1.2fr_0.8fr_1fr]">
       <div>
         <h3 className="text-xl font-black text-slate-950 dark:text-white">Sumit Yadav</h3>

@@ -4,7 +4,7 @@ import { SectionTitle } from "../ui/SectionTitle";
 
 export const ProjectsSection = () => (
   <section id="project" className="section-blend relative scroll-mt-28 overflow-hidden px-6 py-24">
-    <div data-parallax="-12" className="absolute left-0 top-1/4 h-[600px] w-[600px] rounded-full bg-blue-400/5 blur-[120px] dark:bg-blue-500/10" />
+    {/* Removed heavy blur orb for performance */}
     
     <div className="relative z-10 mx-auto max-w-6xl">
       <SectionTitle

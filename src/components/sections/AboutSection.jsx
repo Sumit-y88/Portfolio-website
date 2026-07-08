@@ -25,7 +25,7 @@ export const AboutSection = () => (
     <div aria-hidden="true" className="about-aceternity-bg" />
 
     <div className="relative z-10 mx-auto max-w-7xl px-6">
-      <div data-parallax="-15" className="absolute -left-20 top-20 h-[500px] w-[500px] rounded-full bg-blue-500/5 blur-[100px] dark:bg-blue-600/10" />
+      {/* Removed heavy blur orb for performance */}
       
       <div className="relative z-10">
         <SectionTitle
@@ -49,7 +49,7 @@ export const AboutSection = () => (
             <span
               key={skill}
               data-about-pill
-              className="rounded-full border border-slate-200/70 bg-white/55 px-4 py-2 text-sm font-bold text-slate-700 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200"
+              className="rounded-full border border-slate-200/80 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm dark:border-white/10 dark:bg-slate-900 dark:text-slate-200"
             >
               {skill}
             </span>

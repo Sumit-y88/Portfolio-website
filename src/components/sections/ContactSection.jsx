@@ -173,8 +173,7 @@ export const ContactSection = () => {
 
   return (
     <section id="contact" className="section-blend relative scroll-mt-28 overflow-hidden px-6 py-24">
-      <div data-parallax="-10" className="absolute -right-24 top-24 h-[420px] w-[420px] rounded-full bg-emerald-400/10 blur-[110px] dark:bg-emerald-500/10" />
-      <div data-parallax="8" className="absolute -left-24 bottom-12 h-[360px] w-[360px] rounded-full bg-blue-400/10 blur-[110px] dark:bg-cyan-500/10" />
+      {/* Removed heavy blur orbs for performance */}
 
       <div className="relative z-10 mx-auto max-w-6xl">
         <SectionTitle
@@ -184,7 +183,7 @@ export const ContactSection = () => {
         />
 
         <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="rounded-[1.5rem] border border-slate-200/80 bg-white/70 p-7 shadow-[0_24px_70px_rgba(15,23,42,0.08)] backdrop-blur dark:border-white/10 dark:bg-white/5">
+          <div className="rounded-[1.5rem] border border-slate-200/80 bg-white p-7 shadow-[0_24px_70px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-slate-900/90">
             <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-600/20 dark:bg-cyan-300 dark:text-slate-950">
               <Mail className="h-5 w-5" aria-hidden="true" />
             </div>

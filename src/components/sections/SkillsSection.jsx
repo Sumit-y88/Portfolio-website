@@ -6,8 +6,7 @@ export const SkillsSection = () => {
   return (
     <section id="skills" className="section-blend relative scroll-mt-28 overflow-hidden px-6 py-24">
       {/* Background Gradients */}
-      <div data-parallax="-18" className="absolute right-0 top-28 h-[500px] w-[500px] rounded-full bg-cyan-400/10 blur-[100px] dark:bg-cyan-500/10" />
-      <div data-parallax="12" className="absolute -left-20 bottom-0 h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-[100px] dark:bg-blue-600/10" />
+      {/* Removed heavy blur orbs for performance */}
       
       {/* Subtle Grid Pattern for Aceternity feel */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+CjxjaXJjbGUgY3g9IjEiIGN5PSIxIiByPSIxIiBmaWxsPSJyZ2JhKDE1LCAyMywgNDIsIDAuMDUpIi8+Cjwvc3ZnPg==')] [mask-image:linear-gradient(to_bottom,white,transparent)] dark:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+CjxjaXJjbGUgY3g9IjEiIGN5PSIxIiByPSIxIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDUpIi8+Cjwvc3ZnPg==')]" />

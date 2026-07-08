@@ -26,7 +26,7 @@ export const HeroSection = () => {
         <div data-hero-text className="z-10 min-w-0 text-center lg:text-left">
           <div
             data-hero-reveal
-            className="mx-auto mb-5 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-blue-200/50 bg-white/60 px-3 py-2 text-xs font-bold text-blue-700 shadow-sm backdrop-blur-md sm:px-4 sm:text-sm dark:border-cyan-300/20 dark:bg-white/[0.05] dark:text-cyan-200 lg:mx-0"
+            className="mx-auto mb-5 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-blue-200/50 bg-white px-3 py-2 text-xs font-bold text-blue-700 shadow-sm sm:px-4 sm:text-sm dark:border-cyan-300/20 dark:bg-slate-900 dark:text-cyan-200 lg:mx-0"
           >
             <Sparkles className="h-4 w-4" />
             Available for frontend and full-stack opportunities

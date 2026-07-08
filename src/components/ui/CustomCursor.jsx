@@ -1,40 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 
-// Helper function to play a synthesized "click/tick" sound using Web Audio API
-const playClickSound = () => {
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-    
-    const audioCtx = new AudioContext();
-    const osc = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-
-    osc.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-
-    // Short, crisp tick sound
-    osc.type = "sine";
-    osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.05);
-    
-    // Quick fade out
-    gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime); 
-    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
-
-    osc.start(audioCtx.currentTime);
-    osc.stop(audioCtx.currentTime + 0.05);
-  } catch (e) {
-    console.error("Audio playback failed", e);
-  }
-};
-
 export const CustomCursor = () => {
   const cursorRef = useRef(null);
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [clicks, setClicks] = useState([]);
+  const requestRef = useRef(null);
+  const mousePos = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
     // Check if it's a touch device
@@ -42,32 +15,43 @@ export const CustomCursor = () => {
       return;
     }
 
+    document.body.classList.add("has-custom-cursor");
     setIsVisible(true);
 
-    const updatePosition = (e) => {
+    const updatePosition = () => {
       if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        cursorRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0)`;
       }
+      requestRef.current = requestAnimationFrame(updatePosition);
+    };
+    
+    requestRef.current = requestAnimationFrame(updatePosition);
+
+    const handleMouseMove = (e) => {
+      mousePos.current.x = e.clientX;
+      mousePos.current.y = e.clientY;
     };
 
     const handleMouseOver = (e) => {
-      if (
-        e.target.tagName.toLowerCase() === "a" ||
-        e.target.tagName.toLowerCase() === "button" ||
-        e.target.closest("a") ||
-        e.target.closest("button") ||
-        e.target.classList.contains("clickable") ||
-        window.getComputedStyle(e.target).cursor === "pointer"
-      ) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
+      const target = e.target;
+      if (!target) return;
+
+      const isInteractive =
+        target.tagName.toLowerCase() === "a" ||
+        target.tagName.toLowerCase() === "button" ||
+        target.tagName.toLowerCase() === "input" ||
+        target.tagName.toLowerCase() === "select" ||
+        target.tagName.toLowerCase() === "textarea" ||
+        target.closest("a") ||
+        target.closest("button") ||
+        target.closest(".cursor-pointer") ||
+        target.classList.contains("clickable");
+
+      setIsHovering(!!isInteractive);
     };
 
     const handleMouseDown = (e) => {
       setIsClicking(true);
-      playClickSound();
 
       // Add ripple effect
       const newClick = { id: Date.now(), x: e.clientX, y: e.clientY };
@@ -89,7 +73,7 @@ export const CustomCursor = () => {
       setIsVisible(true);
     };
 
-    window.addEventListener("mousemove", updatePosition, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("mouseover", handleMouseOver, { passive: true });
     window.addEventListener("mousedown", handleMouseDown, { passive: true });
     window.addEventListener("mouseup", handleMouseUp, { passive: true });
@@ -97,7 +81,8 @@ export const CustomCursor = () => {
     document.addEventListener("mouseenter", handleMouseEnter, { passive: true });
 
     return () => {
-      window.removeEventListener("mousemove", updatePosition);
+      cancelAnimationFrame(requestRef.current);
+      window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);

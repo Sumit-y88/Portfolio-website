@@ -46,7 +46,7 @@ export const ProjectCard = ({ project }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ transform: transformStyle }}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white/60 p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-md transition-all ease-out dark:bg-slate-900/60 ${
+      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all ease-out dark:bg-slate-900 ${
         isHovered ? "duration-100" : "duration-500"
       }`}
     >
@@ -91,7 +91,7 @@ export const ProjectCard = ({ project }) => {
               <a
                 href={project.github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-all hover:scale-110 hover:bg-slate-200 hover:text-slate-900 dark:bg-slate-800/80 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
                 title="View Source Code"
               >
@@ -102,7 +102,7 @@ export const ProjectCard = ({ project }) => {
               <a
                 href={project.link}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-all hover:scale-110 hover:bg-blue-100 hover:text-blue-700 dark:bg-cyan-500/10 dark:text-cyan-400 dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300"
                 title="Live Demo"
               >

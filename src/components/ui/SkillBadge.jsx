@@ -29,7 +29,7 @@ export const SkillBadge = ({ skill }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative flex w-full cursor-pointer items-center gap-3 overflow-hidden rounded-xl border border-slate-200/50 bg-white/50 px-3 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-md transition-all duration-300 sm:gap-4 sm:rounded-2xl sm:px-5 sm:py-4 md:w-48 dark:border-white/10 dark:bg-slate-900/40"
+      className="group relative flex w-full cursor-pointer items-center gap-3 overflow-hidden rounded-xl border border-slate-200/50 bg-white px-3 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 sm:gap-4 sm:rounded-2xl sm:px-5 sm:py-4 md:w-48 dark:border-white/10 dark:bg-slate-900"
     >
       <div
         className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"

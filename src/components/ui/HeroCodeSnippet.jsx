@@ -1,5 +1,5 @@
 import { FaReact, FaNodeJs } from "react-icons/fa";
-import { SiTailwindcss, SiJavascript, SiTypescript } from "react-icons/si";
+import { SiTailwindcss, SiJavascript } from "react-icons/si";
 import { useRef, useState, useCallback } from "react";
 
 export const HeroCodeSnippet = () => {
@@ -56,25 +56,25 @@ export const HeroCodeSnippet = () => {
 
       {/* Floating Icons */}
       <div className="absolute -left-1 top-10 z-20 sm:-left-6">
-        <div className="grid h-9 w-9 place-items-center rounded-xl border border-white/20 bg-white/60 text-sky-500 shadow-xl backdrop-blur-md sm:h-12 sm:w-12 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900/60">
+        <div className="grid h-9 w-9 place-items-center rounded-xl border border-white/20 bg-white text-sky-500 shadow-xl sm:h-12 sm:w-12 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900">
           <FaReact className="h-5 w-5 animate-[spin_10s_linear_infinite] sm:h-7 sm:w-7" />
         </div>
       </div>
 
       <div className="absolute -right-1 top-32 z-20 sm:-right-8">
-        <div className="grid h-10 w-10 place-items-center rounded-xl border border-white/20 bg-white/60 text-cyan-500 shadow-xl backdrop-blur-md sm:h-14 sm:w-14 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900/60">
+        <div className="grid h-10 w-10 place-items-center rounded-xl border border-white/20 bg-white text-cyan-500 shadow-xl sm:h-14 sm:w-14 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900">
           <SiTailwindcss className="h-6 w-6 sm:h-8 sm:w-8" />
         </div>
       </div>
 
       <div className="absolute -bottom-3 left-10 z-20 sm:-bottom-6 sm:left-16">
-        <div className="grid h-9 w-9 place-items-center rounded-xl border border-white/20 bg-white/60 text-green-500 shadow-xl backdrop-blur-md sm:h-12 sm:w-12 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900/60">
+        <div className="grid h-9 w-9 place-items-center rounded-xl border border-white/20 bg-white text-green-500 shadow-xl sm:h-12 sm:w-12 sm:rounded-2xl dark:border-white/10 dark:bg-slate-900">
           <FaNodeJs className="h-5 w-5 sm:h-7 sm:w-7" />
         </div>
       </div>
 
       {/* Main Code Editor Window */}
-      <div className="relative z-10 w-full overflow-hidden rounded-2xl border border-slate-200/50 bg-white/70 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/80">
+      <div className="relative z-10 w-full overflow-hidden rounded-2xl border border-slate-200/50 bg-white shadow-2xl dark:border-white/10 dark:bg-slate-900">
         
         {/* Inner Ambient Spotlight */}
         <div

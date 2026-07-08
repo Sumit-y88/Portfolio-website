@@ -42,11 +42,19 @@ export const Navbar = ({ theme, toggleTheme }) => {
   }, [menuOpen]);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 80);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -55,7 +63,7 @@ export const Navbar = ({ theme, toggleTheme }) => {
       className={`fixed left-1/2 z-[60] w-[calc(100%-1rem)] max-w-[1120px] -translate-x-1/2 rounded-full border border-white/50 px-2 py-2 transition-all duration-300 sm:w-[calc(100%-1.5rem)] sm:px-3 ${
         isScrolled 
           ? "top-3 bg-white/65 shadow-md backdrop-blur-md dark:border-white/5 dark:bg-slate-950/65" 
-          : "top-4 bg-white/70 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/60 dark:shadow-[0_20px_60px_rgba(0,0,0,0.22)]"
+          : "top-4 bg-white/80 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur dark:border-white/10 dark:bg-slate-950/80 dark:shadow-[0_20px_60px_rgba(0,0,0,0.22)]"
       }`}
     >
       <nav className="flex min-w-0 items-center justify-between gap-2 sm:gap-4">
@@ -83,11 +91,16 @@ export const Navbar = ({ theme, toggleTheme }) => {
       </nav>
 
       <div
-        className={`absolute left-0 right-0 top-[calc(100%+12px)] overflow-hidden rounded-[1.75rem] border border-white/50 bg-white/90 p-4 shadow-2xl backdrop-blur-2xl transition-all duration-300 md:hidden dark:border-white/10 dark:bg-slate-950/95 ${
+        className={`absolute left-0 right-0 top-[calc(100%+12px)] overflow-hidden rounded-[1.75rem] border border-white/50 bg-white/95 p-4 shadow-2xl backdrop-blur transition-all duration-300 md:hidden dark:border-white/10 dark:bg-slate-950/98 ${
           menuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0"
         }`}
       >
-        <NavLinks onClick={() => setMenuOpen(false)} className="flex flex-col" />
+        <div className="flex flex-col gap-2">
+          <NavLinks onClick={() => setMenuOpen(false)} className="flex flex-col w-full text-center" />
+          <Button onClick={() => { handleEmailClick(); setMenuOpen(false); }} className="mt-2 w-full">
+            Contact Me
+          </Button>
+        </div>
       </div>
     </header>
   );

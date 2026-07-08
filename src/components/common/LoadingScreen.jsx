@@ -57,8 +57,7 @@ export const LoadingScreen = ({ isExiting }) => {
       className="fixed inset-0 z-[100] grid place-items-center overflow-hidden bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-white"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_40%),radial-gradient(circle_at_70%_60%,rgba(34,211,238,0.15),transparent_40%)]" />
-      <div data-loader-orb className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-blue-600/20 blur-[80px]" />
-      <div data-loader-orb className="absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-cyan-400/20 blur-[80px]" />
+      {/* Removed heavy blur orbs for performance */}
 
       <div className="relative z-10 flex flex-col items-center justify-center px-4 w-full">
         <div 
