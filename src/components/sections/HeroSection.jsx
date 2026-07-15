@@ -8,7 +8,7 @@ import { scrollToSection } from "../../utils/scrollToSection";
 export const HeroSection = () => {
   const handleResumeDownload = () => {
     const link = document.createElement("a");
-    link.href = "/Sumit Yadav Resume.pdf";
+    link.href = "/sumit-yadav-resume.pdf";
     link.download = "Sumit Yadav Resume.pdf";
     link.click();
   };
